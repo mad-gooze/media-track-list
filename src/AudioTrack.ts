@@ -22,7 +22,7 @@ export class AudioTrack<T = {}>
     constructor({
         enabled = false,
         ...trackProps
-    }: TrackProps<T> & AudioTrackProps) {
+    }: TrackProps<T> & AudioTrackProps = {}) {
         super(trackProps);
         this._enabled = enabled;
     }

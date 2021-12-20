@@ -12,9 +12,9 @@ describe(clearTrackList, () => {
             get length() {
                 return length;
             },
-            0: new VideoTrack({}),
-            1: new VideoTrack({}),
-            2: new VideoTrack({}),
+            0: new VideoTrack(),
+            1: new VideoTrack(),
+            2: new VideoTrack(),
             removeTrack: (track: VideoTrack) => {
                 const trackIndex = Array.from(TEST_TRACK_LIST).indexOf(track);
                 if (trackIndex === -1) {

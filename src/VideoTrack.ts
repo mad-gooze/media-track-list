@@ -35,7 +35,7 @@ export class VideoTrack<T = {}>
         height,
         bitrate,
         ...trackProps
-    }: TrackProps<T> & VideoTrackProps) {
+    }: TrackProps<T> & VideoTrackProps = {}) {
         super(trackProps);
 
         this.selected = selected;
