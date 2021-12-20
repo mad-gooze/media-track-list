@@ -12,7 +12,7 @@ import type {
  *
  * @param track The track to skip
  */
-function disableOthers(list: ArrayLike<VideoTrack>, track: VideoTrack): void {
+function disableOthers<T>(list: ArrayLike<VideoTrack<T>>, track: VideoTrack<T>): void {
     for (let i = 0; i < list.length; i++) {
         if (!Object.keys(list[i]).length || track.id === list[i].id) {
             continue;
@@ -29,8 +29,8 @@ function disableOthers(list: ArrayLike<VideoTrack>, track: VideoTrack): void {
  *
  * @see [Spec]{@link https://html.spec.whatwg.org/multipage/embedded-content.html#videotracklist}
  */
-export class VideoTrackList
-    extends TrackList<VideoTrack>
+export class VideoTrackList<T = {}>
+    extends TrackList<VideoTrack<T>>
     implements IVideoTrackList
 {
     public onaddtrack:
@@ -41,7 +41,7 @@ export class VideoTrackList
         | ((this: IVideoTrackList, ev: VideoTrackEvent) => any)
         | null;
 
-    constructor(tracks: ReadonlyArray<VideoTrack> = []) {
+    constructor(tracks: ReadonlyArray<VideoTrack<T>> = []) {
         // make sure only 1 track is enabled
         // sorted from last index to first index
         for (let i = tracks.length - 1; i >= 0; i--) {
@@ -71,7 +71,7 @@ export class VideoTrackList
      *
      * @param track The VideoTrack to add to the list
      */
-    addTrack(track: VideoTrack): void {
+    addTrack(track: VideoTrack<T>): void {
         if (track.selected) {
             disableOthers(this, track);
         }

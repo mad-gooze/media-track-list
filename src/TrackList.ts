@@ -1,13 +1,13 @@
 import { Track } from './Track';
 
-export interface CustomTrackEvent<T extends Track> extends Event {
+export interface CustomTrackEvent<T extends Track<K>, K = {}> extends Event {
     track: T | null;
 }
 
 /**
  * Common functionality between AudioTrackList and VideoTrackList
  */
-export abstract class TrackList<T extends Track>
+export abstract class TrackList<T extends Track<K>, K = {}>
     extends EventTarget
     implements ArrayLike<T>
 {

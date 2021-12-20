@@ -12,7 +12,7 @@ import type {
  * @param list list to work on
  * @param track The track to skip
  */
-function disableOthers(list: ArrayLike<AudioTrack>, track: AudioTrack): void {
+function disableOthers<T>(list: ArrayLike<AudioTrack<T>>, track: AudioTrack<T>): void {
     for (let i = 0; i < list.length; i++) {
         if (track.id === list[i].id) {
             continue;
@@ -29,8 +29,8 @@ function disableOthers(list: ArrayLike<AudioTrack>, track: AudioTrack): void {
  *
  * @see [Spec]{@link https://html.spec.whatwg.org/multipage/embedded-content.html#audiotracklist}
  */
-export class AudioTrackList
-    extends TrackList<AudioTrack>
+export class AudioTrackList<T = {}>
+    extends TrackList<AudioTrack<T>>
     implements IAudioTrackList
 {
     public onaddtrack:
@@ -41,7 +41,7 @@ export class AudioTrackList
         | ((this: IAudioTrackList, ev: AudioTrackEvent) => any)
         | null;
 
-    constructor(tracks: ReadonlyArray<AudioTrack> = []) {
+    constructor(tracks: ReadonlyArray<AudioTrack<T>> = []) {
         // make sure only 1 track is enabled
         // sorted from last index to first index
         for (let i = tracks.length - 1; i >= 0; i--) {
@@ -62,7 +62,7 @@ export class AudioTrackList
      *
      * @param track The AudioTrack to add to the list
      */
-    public addTrack(track: AudioTrack): void {
+    public addTrack(track: AudioTrack<T>): void {
         if (track.enabled) {
             disableOthers(this, track);
         }

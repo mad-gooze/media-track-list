@@ -1,18 +1,19 @@
 import { getUniqueTrackId } from './getUniqueTrackId';
 
-export type TrackProps = Partial<{
+export type TrackProps<T extends {}> = Partial<{
     label: string;
     language: string;
     id: string;
     kind: string;
     sourceBuffer: SourceBuffer | null;
+    props: T;
 }>;
 
 /**
  * A Track class that contains all of the common functionality for AudioTrack and VideoTrack
  * @see {@link https://html.spec.whatwg.org/multipage/embedded-content.html}
  */
-export abstract class Track extends EventTarget implements TrackProps {
+export abstract class Track<T> extends EventTarget implements TrackProps<T> {
     /**
      * The menu label for this track.
      */
@@ -28,6 +29,8 @@ export abstract class Track extends EventTarget implements TrackProps {
 
     public readonly kind: string = '';
 
+    public readonly props: T | undefined;
+
     public readonly sourceBuffer: SourceBuffer | null = null;
 
     /**
@@ -40,7 +43,8 @@ export abstract class Track extends EventTarget implements TrackProps {
         language = '',
         id = getUniqueTrackId(),
         sourceBuffer = null,
-    }: Partial<TrackProps>) {
+        props = undefined,
+    }: Partial<TrackProps<T>>) {
         super();
 
         this.label = label;
