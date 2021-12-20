@@ -1,9 +1,9 @@
-import { TrackList } from './TrackList';
-import { VideoTrack } from './VideoTrack';
+import { TrackList } from '../TrackList';
+import { VideoTrack } from '../VideoTrack';
 import type {
     VideoTrackEvent,
     VideoTrackList as IVideoTrackList,
-} from './video';
+} from '../video';
 
 /**
  * Un-select all other {@link VideoTrack}s that are selected.
@@ -12,7 +12,10 @@ import type {
  *
  * @param track The track to skip
  */
-function disableOthers<T>(list: ArrayLike<VideoTrack<T>>, track: VideoTrack<T>): void {
+function disableOthers<T>(
+    list: ArrayLike<VideoTrack<T>>,
+    track: VideoTrack<T>,
+): void {
     for (let i = 0; i < list.length; i++) {
         if (!Object.keys(list[i]).length || track.id === list[i].id) {
             continue;
@@ -85,7 +88,9 @@ export class VideoTrackList<T = {}>
             this._changing = true;
             disableOthers(this, track);
             this._changing = false;
-            this.dispatchEvent(new Event('change'));
+            const changeEvent = new Event('change');
+            this.onchange?.(changeEvent);
+            this.dispatchEvent(changeEvent);
         };
     }
 }

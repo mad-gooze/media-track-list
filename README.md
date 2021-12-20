@@ -5,8 +5,10 @@
 ## Usage
 
 ```js
-import { VideoTrackList, AudioTrackList, VideoTrack, AudioTrack } from 'media-track-list';
+import {
+    VideoTrackList,
+    AudioTrackList,
+    VideoTrack,
+    AudioTrack,
+} from 'media-track-list';
 ```
-
-
-

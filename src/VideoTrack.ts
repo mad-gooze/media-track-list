@@ -14,7 +14,10 @@ export type VideoTrackProps = Partial<{
  *
  * @see [Spec]{@link https://html.spec.whatwg.org/multipage/embedded-content.html#videotrack}
  */
-export class VideoTrack<T = {}> extends Track<T> implements IVideoTrack, VideoTrackProps {
+export class VideoTrack<T = {}>
+    extends Track<T>
+    implements IVideoTrack, VideoTrackProps
+{
     private _selected = false;
 
     public readonly width?: number;

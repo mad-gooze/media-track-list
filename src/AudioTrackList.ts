@@ -12,7 +12,10 @@ import type {
  * @param list list to work on
  * @param track The track to skip
  */
-function disableOthers<T>(list: ArrayLike<AudioTrack<T>>, track: AudioTrack<T>): void {
+function disableOthers<T>(
+    list: ArrayLike<AudioTrack<T>>,
+    track: AudioTrack<T>,
+): void {
     for (let i = 0; i < list.length; i++) {
         if (track.id === list[i].id) {
             continue;

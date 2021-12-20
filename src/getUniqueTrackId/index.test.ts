@@ -1,7 +1,7 @@
-import { getUniqueTrackId } from ".";
+import { getUniqueTrackId } from '.';
 
 describe(getUniqueTrackId, () => {
-    it('returns unique track id\'s', () => {
+    it("returns unique track id's", () => {
         expect(getUniqueTrackId() !== getUniqueTrackId()).toBeTruthy();
     });
 });
