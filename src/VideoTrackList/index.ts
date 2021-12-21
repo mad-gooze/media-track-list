@@ -3,6 +3,7 @@ import { VideoTrack } from '../VideoTrack';
 import type {
     VideoTrackEvent,
     VideoTrackList as IVideoTrackList,
+    VideoTrackListEventMap,
 } from '../video';
 
 /**
@@ -60,6 +61,46 @@ export class VideoTrackList<T = {}>
         this.onremovetrack = null;
 
         this.addEventListener('change', (e) => this.onchange?.(e));
+        this.addEventListener('addtrack', (e) => this.onaddtrack?.(e));
+        this.addEventListener('removetrack', (e) => this.onremovetrack?.(e));
+    }
+
+    public addEventListener<K extends keyof VideoTrackListEventMap>(
+        type: K,
+        listener: (this: VideoTrackList, ev: VideoTrackListEventMap[K]) => any,
+        options?: boolean | AddEventListenerOptions,
+    ): void;
+    public addEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        options?: boolean | AddEventListenerOptions,
+    ): void;
+    public addEventListener<K extends keyof VideoTrackListEventMap>(
+        type: K | string,
+        listener: (this: VideoTrackList, ev: VideoTrackListEventMap[K]) => any | EventListenerOrEventListenerObject,
+        options?: boolean | AddEventListenerOptions,
+    ): void {
+        // @ts-ignore
+        super.addEventListener(type, listener, options);
+    }
+
+    public removeEventListener<K extends keyof VideoTrackListEventMap>(
+        type: K,
+        listener: (this: VideoTrackList, ev: VideoTrackListEventMap[K]) => any,
+        options?: boolean | EventListenerOptions,
+    ): void;
+    public removeEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        options?: boolean | EventListenerOptions,
+    ): void;
+    public removeEventListener<K extends keyof VideoTrackListEventMap>(
+        type: K | string,
+        listener: (this: VideoTrackList, ev: VideoTrackListEventMap[K]) => any | EventListenerOrEventListenerObject,
+        options?: boolean | EventListenerOptions,
+    ): void {
+        // @ts-ignore
+        super.removeEventListener(type, listener, options);
     }
 
     public get selectedIndex(): number {

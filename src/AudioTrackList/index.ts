@@ -1,9 +1,9 @@
 import { AudioTrack } from '../AudioTrack';
-import { CustomTrackEvent } from '../CustomTrackEvent';
 import { TrackList } from '../TrackList';
 import type {
     AudioTrackEvent,
     AudioTrackList as IAudioTrackList,
+    AudioTrackListEventMap,
 } from '../video';
 
 /**
@@ -61,6 +61,8 @@ export class AudioTrackList<T = {}>
         this.onremovetrack = null;
 
         this.addEventListener('change', (e) => this.onchange?.(e));
+        this.addEventListener('addtrack', (e) => this.onaddtrack?.(e));
+        this.addEventListener('removetrack', (e) => this.onremovetrack?.(e));
     }
 
     /**
@@ -87,5 +89,43 @@ export class AudioTrackList<T = {}>
             this._changing = false;
             this.dispatchEvent(new Event('change'));
         };
+    }
+
+    public addEventListener<K extends keyof AudioTrackListEventMap>(
+        type: K,
+        listener: (this: AudioTrackList, ev: AudioTrackListEventMap[K]) => any,
+        options?: boolean | AddEventListenerOptions,
+    ): void;
+    public addEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        options?: boolean | AddEventListenerOptions,
+    ): void;
+    public addEventListener<K extends keyof AudioTrackListEventMap>(
+        type: K | string,
+        listener: (this: AudioTrackList, ev: AudioTrackListEventMap[K]) => any | EventListenerOrEventListenerObject,
+        options?: boolean | AddEventListenerOptions,
+    ): void {
+        // @ts-ignore
+        super.addEventListener(type, listener, options);
+    }
+
+    public removeEventListener<K extends keyof AudioTrackListEventMap>(
+        type: K,
+        listener: (this: AudioTrackList, ev: AudioTrackListEventMap[K]) => any,
+        options?: boolean | EventListenerOptions,
+    ): void;
+    public removeEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        options?: boolean | EventListenerOptions,
+    ): void;
+    public removeEventListener<K extends keyof AudioTrackListEventMap>(
+        type: K | string,
+        listener: (this: AudioTrackList, ev: AudioTrackListEventMap[K]) => any | EventListenerOrEventListenerObject,
+        options?: boolean | EventListenerOptions,
+    ): void {
+        // @ts-ignore
+        super.removeEventListener(type, listener, options);
     }
 }

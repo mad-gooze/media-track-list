@@ -3,6 +3,8 @@ import { VideoTrackList } from '.';
 import { VideoTrack } from '../VideoTrack';
 
 describe(VideoTrackList, () => {
+    let list: VideoTrackList;
+
     it('trigger "change" when "selectedchange" is fired on a track', () => {
         const track = new VideoTrack();
         const videoTrackList = new VideoTrackList([track]);
@@ -30,7 +32,7 @@ describe(VideoTrackList, () => {
             new VideoTrack({ selected: true }),
             new VideoTrack(),
         ];
-        const list = new VideoTrackList([tracks[0], tracks[1]]);
+        list = new VideoTrackList([tracks[0], tracks[1]]);
 
         expect(tracks[0].selected).toEqual(false);
         expect(tracks[1].selected).toEqual(true);
@@ -67,11 +69,8 @@ describe(VideoTrackList, () => {
     });
 
     it('all tracks can be unselected', () => {
-        const tracks = [
-            new VideoTrack(),
-            new VideoTrack(),
-        ];
-        const list = new VideoTrackList([tracks[0], tracks[1]]);
+        const tracks = [new VideoTrack(), new VideoTrack()];
+        list = new VideoTrackList([tracks[0], tracks[1]]);
 
         expect(tracks[0].selected).toEqual(false);
         expect(tracks[1].selected).toEqual(false);
@@ -97,8 +96,8 @@ describe(VideoTrackList, () => {
             new VideoTrack({ selected: true }),
             new VideoTrack({ selected: true }),
             new VideoTrack(),
-        ]
-        const list = new VideoTrackList([tracks[0], tracks[1]]);
+        ];
+        list = new VideoTrackList([tracks[0], tracks[1]]);
 
         let change = 0;
         const onChange = () => change++;
@@ -125,5 +124,40 @@ describe(VideoTrackList, () => {
         list.removeTrack(tracks[2]);
         list.removeTrack(tracks[3]);
         list.removeEventListener('change', onChange);
+    });
+
+    it('triggers addtrack and removetrack events', () => {
+        list = new VideoTrackList();
+        const track = new VideoTrack();
+
+        const onAddTrack = jest.fn();
+        const onAddTrackInline = jest.fn();
+        const onRemoveTrack = jest.fn();
+        const onRemoveTrackInline = jest.fn();
+
+        list.addEventListener('addtrack', onAddTrack);
+        list.onaddtrack = onAddTrackInline;
+
+        list.addEventListener('removetrack', onRemoveTrack);
+        list.onremovetrack = onRemoveTrackInline;
+
+        // addtrack
+        list.addTrack(track);
+
+        expect(onAddTrackInline).toBeCalledTimes(1);
+        expect(onAddTrackInline).lastCalledWith(expect.objectContaining({ track }));
+        expect(onAddTrackInline).toHaveBeenCalledBefore(onAddTrack);
+
+        expect(onAddTrack).toBeCalledTimes(1);
+        expect(onAddTrack).lastCalledWith(expect.objectContaining({ track }));
+
+        // removetrack
+        list.removeTrack(track);
+
+        expect(onRemoveTrackInline).toBeCalledTimes(1);
+        expect(onRemoveTrackInline).lastCalledWith(expect.objectContaining({ track }));
+
+        expect(onRemoveTrackInline).toHaveBeenCalledBefore(onRemoveTrack);
+        expect(onRemoveTrack).toBeCalledTimes(1);
     });
 });

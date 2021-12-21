@@ -1,5 +1,7 @@
-import { AudioTrackList } from ".";
-import { AudioTrack } from "../AudioTrack";
+import { AudioTrackList } from '.';
+import { AudioTrack } from '../AudioTrack';
+import 'jest-extended';
+
 
 describe(AudioTrackList, () => {
     let list: AudioTrackList;
@@ -54,10 +56,7 @@ describe(AudioTrackList, () => {
     });
 
     it('all tracks can be disabled', () => {
-        const tracks = [
-            new AudioTrack(),
-            new AudioTrack(),
-        ];
+        const tracks = [new AudioTrack(), new AudioTrack()];
 
         list = new AudioTrackList([tracks[0], tracks[1]]);
 
@@ -98,5 +97,41 @@ describe(AudioTrackList, () => {
 
         list.addTrack(tracks[3]);
         expect(onChange).toBeCalledTimes(4);
+    });
+
+    it('triggers addtrack and removetrack events', () => {
+        list = new AudioTrackList();
+        const track = new AudioTrack();
+
+        const onAddTrack = jest.fn();
+        const onAddTrackInline = jest.fn();
+        const onRemoveTrack = jest.fn();
+        const onRemoveTrackInline = jest.fn();
+
+        list.addEventListener('addtrack', onAddTrack);
+        list.onaddtrack = onAddTrackInline;
+
+        list.addEventListener('removetrack', onRemoveTrack);
+        list.onremovetrack = onRemoveTrackInline;
+
+        // addtrack
+        list.addTrack(track);
+
+        expect(onAddTrackInline).toBeCalledTimes(1);
+        expect(onAddTrackInline).lastCalledWith(expect.objectContaining({ track }));
+        expect(onAddTrackInline).toHaveBeenCalledBefore(onAddTrack);
+
+        expect(onAddTrack).toBeCalledTimes(1);
+        expect(onAddTrack).lastCalledWith(expect.objectContaining({ track }));
+
+        // removetrack
+        list.removeTrack(track);
+
+        expect(onRemoveTrackInline).toBeCalledTimes(1);
+        expect(onRemoveTrackInline).lastCalledWith(expect.objectContaining({ track }));
+
+        expect(onRemoveTrackInline).toHaveBeenCalledBefore(onRemoveTrack);
+        expect(onRemoveTrack).toBeCalledTimes(1);
+        expect(onRemoveTrack).lastCalledWith(expect.objectContaining({ track }));
     });
 });
