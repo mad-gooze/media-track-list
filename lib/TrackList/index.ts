@@ -60,8 +60,6 @@ export abstract class TrackList<
     /**
      * Remove a {@link Track} from the `TrackList`
      * @param track to remove from the list.
-     *
-     * @internal
      */
     public removeTrack(track: T) {
         const index = this.tracks.indexOf(track);
