@@ -19,9 +19,11 @@ import {
     AudioTrack,
 } from 'media-track-list';
 
-const videoTrackList = new VideoTrackList({
+const videoTrackList = new VideoTrackList();
+const track = new VideoTrack({
     id: '0',
     width: 1920,
     height: 1080,
 });
+videoTrackList.addTrack(track);
 ```
