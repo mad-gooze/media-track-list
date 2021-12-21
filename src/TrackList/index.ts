@@ -1,5 +1,6 @@
 import { CustomTrackEvent } from '../CustomTrackEvent';
 import { Track } from '../Track';
+import EventTarget from '@ungap/event-target'
 
 /**
  * Common functionality between AudioTrackList and VideoTrackList
