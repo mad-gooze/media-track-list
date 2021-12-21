@@ -5,3 +5,8 @@ src/
 tsconfig.json
 example/
 coverage/
+lib/
+dist/tsconfig.tsbuildinfo
+.eslintcache
+.github/
+babel.config.js
