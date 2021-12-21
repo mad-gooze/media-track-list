@@ -4,3 +4,4 @@ jest.config.js
 src/
 tsconfig.json
 example/
+coverage/

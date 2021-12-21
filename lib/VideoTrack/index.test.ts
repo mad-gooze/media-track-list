@@ -1,4 +1,4 @@
-import { VideoTrack } from '../VideoTrack';
+import { VideoTrack } from '.';
 
 describe(VideoTrack, () => {
     it('can create an VideoTrack a selected property', () => {

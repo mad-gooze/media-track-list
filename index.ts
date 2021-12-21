@@ -1,6 +1,6 @@
-import { AudioTrack } from './src/AudioTrack';
-import { AudioTrackList } from './src/AudioTrackList';
-import { VideoTrack } from './src/VideoTrack';
-import { VideoTrackList } from './src/VideoTrackList';
+import { AudioTrack } from './lib/AudioTrack';
+import { AudioTrackList } from './lib/AudioTrackList';
+import { VideoTrack } from './lib/VideoTrack';
+import { VideoTrackList } from './lib/VideoTrackList';
 
 export { AudioTrack, AudioTrackList, VideoTrack, VideoTrackList };

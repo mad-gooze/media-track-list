@@ -1,4 +1,4 @@
-import { AudioTrack } from '../AudioTrack';
+import { AudioTrack } from '.';
 
 describe(AudioTrack, () => {
     it('can create an AudioTrack a enabled property', () => {
