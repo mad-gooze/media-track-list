@@ -1,8 +1,5 @@
+import { CustomTrackEvent } from './CustomTrackEvent';
 import { Track } from './Track';
-
-export interface CustomTrackEvent<T extends Track<K>, K = {}> extends Event {
-    track: T | null;
-}
 
 /**
  * Common functionality between AudioTrackList and VideoTrackList

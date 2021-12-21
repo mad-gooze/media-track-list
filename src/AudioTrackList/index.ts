@@ -1,4 +1,5 @@
 import { AudioTrack } from '../AudioTrack';
+import { CustomTrackEvent } from '../CustomTrackEvent';
 import { TrackList } from '../TrackList';
 import type {
     AudioTrackEvent,
@@ -58,6 +59,8 @@ export class AudioTrackList<T = {}>
         this.onaddtrack = null;
         this.onchange = null;
         this.onremovetrack = null;
+
+        this.addEventListener('change', (e) => this.onchange?.(e));
     }
 
     /**
@@ -82,9 +85,7 @@ export class AudioTrackList<T = {}>
             this._changing = true;
             disableOthers(this, track);
             this._changing = false;
-            const changeEvent = new Event('change');
-            this.onchange?.(changeEvent);
-            this.dispatchEvent(changeEvent);
+            this.dispatchEvent(new Event('change'));
         };
     }
 }
