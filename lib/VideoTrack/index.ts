@@ -1,4 +1,5 @@
-import { Track, TrackProps } from '../Track';
+import type { TrackProps } from '../Track';
+import { Track } from '../Track';
 import type { VideoTrack as IVideoTrack } from '../video';
 
 export type VideoTrackProps = Partial<{

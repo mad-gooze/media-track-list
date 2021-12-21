@@ -9,7 +9,7 @@
         "build": "tsc",
         "test": "jest",
         "prepublish": "npm run clean && npm run build",
-        "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix --cache",
+        "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --cache",
         "lint:fix": "npm run lint -- --fix"
     },
     "repository": {

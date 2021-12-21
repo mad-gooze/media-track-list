@@ -1,4 +1,4 @@
-import { AudioTrack } from '../AudioTrack';
+import type { AudioTrack } from '../AudioTrack';
 import { createCustomEvent } from '../createCustomEvent';
 import { TrackList } from '../TrackList';
 import type {

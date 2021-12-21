@@ -1,4 +1,4 @@
-import { Track } from './Track';
+import type { Track } from './Track';
 
 export interface CustomTrackEvent<
     T extends Track<P>,

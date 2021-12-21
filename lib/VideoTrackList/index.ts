@@ -1,5 +1,5 @@
 import { TrackList } from '../TrackList';
-import { VideoTrack } from '../VideoTrack';
+import type { VideoTrack } from '../VideoTrack';
 import type {
     VideoTrackEvent,
     VideoTrackList as IVideoTrackList,

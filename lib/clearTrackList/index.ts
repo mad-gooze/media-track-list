@@ -1,5 +1,5 @@
-import { Track } from '../Track';
-import { TrackList } from '../TrackList';
+import type { Track } from '../Track';
+import type { TrackList } from '../TrackList';
 
 export function clearTrackList<
     T extends Track<P>,
