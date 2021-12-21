@@ -100,7 +100,7 @@ export abstract class TrackList<T extends Track<K>, K = {}>
      */
     protected dispatchTrackEvent(eventName: string, track: T): void {
         const ev = new Event(eventName) as CustomTrackEvent<T>;
-        ev.track = track || null;
+        ev.track = track;
         this.dispatchEvent(ev);
     }
 }

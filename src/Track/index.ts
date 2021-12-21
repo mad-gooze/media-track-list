@@ -13,7 +13,7 @@ export type TrackProps<T extends {}> = Partial<{
  * A Track class that contains all of the common functionality for AudioTrack and VideoTrack
  * @see {@link https://html.spec.whatwg.org/multipage/embedded-content.html}
  */
-export abstract class Track<T> extends EventTarget implements TrackProps<T> {
+export abstract class Track<T> implements TrackProps<T> {
     /**
      * The menu label for this track.
      */
@@ -45,8 +45,6 @@ export abstract class Track<T> extends EventTarget implements TrackProps<T> {
         sourceBuffer = null,
         props = undefined,
     }: Partial<TrackProps<T>>) {
-        super();
-
         this.label = label;
         this.language = language;
         this.id = id;

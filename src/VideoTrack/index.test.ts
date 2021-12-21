@@ -13,6 +13,7 @@ describe(VideoTrack, () => {
         expect(track.selected).toEqual(false);
         expect(track.label).toEqual('');
         expect(track.language).toEqual('');
+        expect(track.sourceBuffer).toEqual(null);
         expect(track.id.length).toBeGreaterThan(0);
 
         const otherTrack = new VideoTrack();
@@ -22,7 +23,6 @@ describe(VideoTrack, () => {
     it('when selected is changed onselectedchange is called', () => {
         const track = new VideoTrack({ selected: false });
         track.onselectedchange = jest.fn();
-        track.addEventListener('selectedchange', track.onselectedchange);
 
         // two events
         track.selected = true;
