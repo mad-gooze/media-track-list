@@ -6,19 +6,18 @@ describe(VideoTrackList, () => {
     it('trigger "change" when "selectedchange" is fired on a track', () => {
         const track = new VideoTrack();
         const videoTrackList = new VideoTrackList([track]);
-        let changes = 0;
 
-        const onChange = () => changes++;
+        const onChange = jest.fn();
         videoTrackList.addEventListener('change', onChange);
 
         track.onselectedchange?.();
-        expect(changes).toEqual(1);
+        expect(onChange).toBeCalledTimes(1);
 
         videoTrackList.removeEventListener('change', onChange);
         videoTrackList.onchange = onChange;
 
         track.onselectedchange?.();
-        expect(changes).toEqual(2);
+        expect(onChange).toBeCalledTimes(2);
 
         videoTrackList.removeTrack(track);
         videoTrackList.onchange = null;

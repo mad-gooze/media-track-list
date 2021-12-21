@@ -81,8 +81,6 @@ describe(AudioTrackList, () => {
             new AudioTrack(),
         ];
         list = new AudioTrackList([tracks[0], tracks[1]]);
-
-        let changes = 0;
         const onChange = jest.fn()
 
         list.addEventListener('change', onChange);
