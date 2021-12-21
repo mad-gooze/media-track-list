@@ -109,6 +109,7 @@ export class AudioTrackList<T = {}>
         ) => any | EventListenerOrEventListenerObject,
         options?: boolean | AddEventListenerOptions,
     ): void {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         super.addEventListener(type, listener, options);
     }
@@ -131,6 +132,7 @@ export class AudioTrackList<T = {}>
         ) => any | EventListenerOrEventListenerObject,
         options?: boolean | EventListenerOptions,
     ): void {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         super.removeEventListener(type, listener, options);
     }

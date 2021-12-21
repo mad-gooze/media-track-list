@@ -20,6 +20,7 @@ describe(clearTrackList, () => {
                 if (trackIndex === -1) {
                     throw new Error('Invalid track');
                 }
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 delete TEST_TRACK_LIST[trackIndex];
                 length--;
