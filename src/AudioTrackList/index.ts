@@ -13,7 +13,7 @@ import type {
  * @param list list to work on
  * @param track The track to skip
  */
-function disableOthers<T>(
+function disableOthers<T extends Record<string, unknown>>(
     list: ArrayLike<AudioTrack<T>>,
     track: AudioTrack<T>,
 ): void {
@@ -33,8 +33,10 @@ function disableOthers<T>(
  *
  * @see [Spec]{@link https://html.spec.whatwg.org/multipage/embedded-content.html#audiotracklist}
  */
-export class AudioTrackList<T = {}>
-    extends TrackList<AudioTrack<T>>
+export class AudioTrackList<
+        T extends Record<string, unknown> = Record<string, never>,
+    >
+    extends TrackList<AudioTrack<T>, T>
     implements IAudioTrackList
 {
     public onaddtrack:

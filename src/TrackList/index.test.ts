@@ -1,15 +1,15 @@
 import { TrackList } from '.';
 import { Track } from '../Track';
 
-class TestTrack extends Track<{}> {
+class TestTrack extends Track<Record<string, never>> {
     public _destroy(): void {
         //
     }
 }
-class TestTrackList extends TrackList<TestTrack> {}
+class TestTrackList extends TrackList<TestTrack, Record<string, never>> {}
 
 describe(TrackList, () => {
-    let tracks;
+    let tracks: TestTrack[];
 
     beforeEach(() => {
         tracks = [
@@ -27,9 +27,9 @@ describe(TrackList, () => {
     it('can get tracks by int and string id', () => {
         const trackList = new TestTrackList(tracks);
 
-        expect(trackList.getTrackById('1').id).toEqual('1');
-        expect(trackList.getTrackById('2').id).toEqual('2');
-        expect(trackList.getTrackById('3').id).toEqual('3');
+        expect(trackList.getTrackById('1')!.id).toEqual('1');
+        expect(trackList.getTrackById('2')!.id).toEqual('2');
+        expect(trackList.getTrackById('3')!.id).toEqual('3');
     });
 
     it('length is updated when new tracks are added or removed', () => {
@@ -40,9 +40,9 @@ describe(TrackList, () => {
         trackList.addTrack(new TestTrack({ id: '101' }));
         expect(trackList.length).toEqual(tracks.length + 2);
 
-        trackList.removeTrack(trackList.getTrackById('101'));
+        trackList.removeTrack(trackList.getTrackById('101')!);
         expect(trackList.length).toEqual(tracks.length + 1);
-        trackList.removeTrack(trackList.getTrackById('100'));
+        trackList.removeTrack(trackList.getTrackById('100')!);
         expect(trackList.length).toEqual(tracks.length);
     });
 
@@ -85,8 +85,8 @@ describe(TrackList, () => {
         expect(trackList[3].id).toEqual('100');
         expect(trackList[4].id).toEqual('101');
 
-        trackList.removeTrack(trackList.getTrackById('101'));
-        trackList.removeTrack(trackList.getTrackById('100'));
+        trackList.removeTrack(trackList.getTrackById('101')!);
+        trackList.removeTrack(trackList.getTrackById('100')!);
 
         expect(trackList[3]).toBeUndefined();
         expect(trackList[4]).toBeUndefined();
@@ -98,7 +98,7 @@ describe(TrackList, () => {
         trackList.addTrack(new TestTrack({ id: '100' }));
         expect(trackList[3].id).toEqual('100');
 
-        trackList.removeTrack(trackList.getTrackById('100'));
+        trackList.removeTrack(trackList.getTrackById('100')!);
         expect(trackList[3]).toBeUndefined();
 
         trackList.addTrack(new TestTrack({ id: '101' }));
@@ -109,54 +109,4 @@ describe(TrackList, () => {
         const trackList = new TestTrackList();
         expect(trackList.getTrackById('foobar')).toEqual(null);
     });
-
-    //   it('a "addtrack" event is triggered when new tracks are added', () => {
-    //     const trackList = new TestTrackList(tracks);
-
-    //     let tracks = 0;
-    //     let adds = 0;
-    //     const addHandler = (e) => {
-    //       if (e.track) {
-    //         tracks++;
-    //       }
-    //       adds++;
-    //     };
-
-    //     trackList.addEventListener('addtrack', addHandler);
-
-    //     trackList.addTrack(new TestTrack({ id: '100'}));
-    //     trackList.addTrack(new TestTrack({ id: '101'}));
-
-    //     trackList.off('addtrack', addHandler);
-    //     trackList.onaddtrack = addHandler;
-
-    //     trackList.addTrack(newTrack('102'));
-    //     trackList.addTrack(newTrack('103'));
-
-    //     expect(adds, 4, 'we got ' + adds + ' "addtrack" events');
-    //     expect(tracks, 4, 'we got a track with every event');
-    //   });
-
-    //   it('a "removetrack" event is triggered when tracks are removed', () => {
-    //     const trackList = new TestTrackList(tracks);
-    //     let tracks = 0;
-    //     let rms = 0;
-    //     const rmHandler = (e) => {
-    //       if (e.track) {
-    //         tracks++;
-    //       }
-    //       rms++;
-    //     };
-
-    //     trackList.addEventListener('removetrack', rmHandler);
-    //     trackList.removeTrack(trackList.getTrackById('1'));
-    //     trackList.removeTrack(trackList.getTrackById('2'));
-
-    //     trackList.removeEventListener('removetrack', rmHandler);
-    //     trackList.onremovetrack = rmHandler;
-    //     trackList.removeTrack(trackList.getTrackById('3'));
-
-    //     expect(rms, 3, 'we got ' + rms + ' "removetrack" events');
-    //     expect(tracks, 3, 'we got a track with every event');
-    //   });
 });

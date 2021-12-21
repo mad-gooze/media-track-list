@@ -13,7 +13,7 @@ import type {
  *
  * @param track The track to skip
  */
-function disableOthers<T>(
+function disableOthers<T extends Record<string, unknown>>(
     list: ArrayLike<VideoTrack<T>>,
     track: VideoTrack<T>,
 ): void {
@@ -33,8 +33,10 @@ function disableOthers<T>(
  *
  * @see [Spec]{@link https://html.spec.whatwg.org/multipage/embedded-content.html#videotracklist}
  */
-export class VideoTrackList<T = {}>
-    extends TrackList<VideoTrack<T>>
+export class VideoTrackList<
+        T extends Record<string, unknown> = Record<string, never>,
+    >
+    extends TrackList<VideoTrack<T>, T>
     implements IVideoTrackList
 {
     public onaddtrack:

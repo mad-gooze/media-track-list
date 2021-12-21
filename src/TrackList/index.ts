@@ -4,7 +4,10 @@ import { Track } from '../Track';
 /**
  * Common functionality between AudioTrackList and VideoTrackList
  */
-export abstract class TrackList<T extends Track<K>, K = {}>
+export abstract class TrackList<
+        T extends Track<P>,
+        P extends Record<string, unknown>,
+    >
     extends EventTarget
     implements ArrayLike<T>
 {
@@ -99,7 +102,7 @@ export abstract class TrackList<T extends Track<K>, K = {}>
      * @internal
      */
     protected dispatchTrackEvent(eventName: string, track: T): void {
-        const ev = new Event(eventName) as CustomTrackEvent<T>;
+        const ev = new Event(eventName) as CustomTrackEvent<T, P>;
         ev.track = track;
         this.dispatchEvent(ev);
     }

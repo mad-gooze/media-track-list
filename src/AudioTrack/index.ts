@@ -9,7 +9,9 @@ export type AudioTrackProps = { enabled?: boolean };
  *
  * @see [Spec]{@link https://html.spec.whatwg.org/multipage/embedded-content.html#audiotrack}
  */
-export class AudioTrack<T = {}>
+export class AudioTrack<
+        T extends Record<string, unknown> = Record<string, never>,
+    >
     extends Track<T>
     implements IAudioTrack, AudioTrackProps
 {

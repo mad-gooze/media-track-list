@@ -14,7 +14,9 @@ export type VideoTrackProps = Partial<{
  *
  * @see [Spec]{@link https://html.spec.whatwg.org/multipage/embedded-content.html#videotrack}
  */
-export class VideoTrack<T = {}>
+export class VideoTrack<
+        T extends Record<string, unknown> = Record<string, never>,
+    >
     extends Track<T>
     implements IVideoTrack, VideoTrackProps
 {

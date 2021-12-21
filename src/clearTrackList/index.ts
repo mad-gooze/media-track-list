@@ -1,8 +1,13 @@
 import { Track } from '../Track';
 import { TrackList } from '../TrackList';
 
-export function clearTrackList<T extends Track<K>, K = {}>(
-    trackList: (ArrayLike<T> & Pick<TrackList<T>, 'removeTrack'>) | undefined,
+export function clearTrackList<
+    T extends Track<P>,
+    P extends Record<string, unknown> = Record<string, never>,
+>(
+    trackList:
+        | (ArrayLike<T> & Pick<TrackList<T, P>, 'removeTrack'>)
+        | undefined,
 ): void {
     if (trackList === undefined) {
         return;

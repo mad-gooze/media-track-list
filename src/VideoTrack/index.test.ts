@@ -30,7 +30,7 @@ describe(VideoTrack, () => {
 
         expect(track.width).toEqual(1920);
         expect(track.height).toEqual(1080);
-        expect(track.props.metadata).toEqual('foobar');
+        expect(track.props!.metadata).toEqual('foobar');
     });
 
     it('when selected is changed onselectedchange is called', () => {

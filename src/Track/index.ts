@@ -1,6 +1,6 @@
 import { getUniqueTrackId } from '../getUniqueTrackId';
 
-export type TrackProps<T extends {}> = Partial<{
+export type TrackProps<T extends Record<string, unknown>> = Partial<{
     label: string;
     language: string;
     id: string;
@@ -13,7 +13,9 @@ export type TrackProps<T extends {}> = Partial<{
  * A Track class that contains all of the common functionality for AudioTrack and VideoTrack
  * @see {@link https://html.spec.whatwg.org/multipage/embedded-content.html}
  */
-export abstract class Track<T> implements TrackProps<T> {
+export abstract class Track<T extends Record<string, unknown>>
+    implements TrackProps<T>
+{
     /**
      * The menu label for this track.
      */

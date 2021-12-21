@@ -9,9 +9,7 @@
         "test": "jest",
         "prepublish": "npm run clean && npm run build",
         "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix --cache",
-        "lint:fix": "npm run lint -- --fix",
-        "prettier": "prettier . --fix -w --ignore-path .gitignore",
-        "prettier:fix": "npm run prettier -- --fix"
+        "lint:fix": "npm run lint -- --fix"
     },
     "repository": {
         "type": "git",
