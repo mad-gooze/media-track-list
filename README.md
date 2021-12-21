@@ -17,6 +17,7 @@ import {
     AudioTrackList,
     VideoTrack,
     AudioTrack,
+    clearTrackList,
 } from 'media-track-list';
 
 const videoTrackList = new VideoTrackList();
@@ -26,4 +27,6 @@ const track = new VideoTrack({
     height: 1080,
 });
 videoTrackList.addTrack(track);
+
+clearTrackList(videoTrackList);
 ```
