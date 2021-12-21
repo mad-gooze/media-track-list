@@ -2,7 +2,6 @@ import { AudioTrackList } from '.';
 import { AudioTrack } from '../AudioTrack';
 import 'jest-extended';
 
-
 describe(AudioTrackList, () => {
     let list: AudioTrackList;
 
@@ -80,7 +79,7 @@ describe(AudioTrackList, () => {
             new AudioTrack(),
         ];
         list = new AudioTrackList([tracks[0], tracks[1]]);
-        const onChange = jest.fn()
+        const onChange = jest.fn();
 
         list.addEventListener('change', onChange);
         tracks[0].enabled = true;
@@ -118,7 +117,9 @@ describe(AudioTrackList, () => {
         list.addTrack(track);
 
         expect(onAddTrackInline).toBeCalledTimes(1);
-        expect(onAddTrackInline).lastCalledWith(expect.objectContaining({ track }));
+        expect(onAddTrackInline).lastCalledWith(
+            expect.objectContaining({ track }),
+        );
         expect(onAddTrackInline).toHaveBeenCalledBefore(onAddTrack);
 
         expect(onAddTrack).toBeCalledTimes(1);
@@ -128,10 +129,14 @@ describe(AudioTrackList, () => {
         list.removeTrack(track);
 
         expect(onRemoveTrackInline).toBeCalledTimes(1);
-        expect(onRemoveTrackInline).lastCalledWith(expect.objectContaining({ track }));
+        expect(onRemoveTrackInline).lastCalledWith(
+            expect.objectContaining({ track }),
+        );
 
         expect(onRemoveTrackInline).toHaveBeenCalledBefore(onRemoveTrack);
         expect(onRemoveTrack).toBeCalledTimes(1);
-        expect(onRemoveTrack).lastCalledWith(expect.objectContaining({ track }));
+        expect(onRemoveTrack).lastCalledWith(
+            expect.objectContaining({ track }),
+        );
     });
 });

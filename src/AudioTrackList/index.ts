@@ -103,7 +103,10 @@ export class AudioTrackList<T = {}>
     ): void;
     public addEventListener<K extends keyof AudioTrackListEventMap>(
         type: K | string,
-        listener: (this: AudioTrackList, ev: AudioTrackListEventMap[K]) => any | EventListenerOrEventListenerObject,
+        listener: (
+            this: AudioTrackList,
+            ev: AudioTrackListEventMap[K],
+        ) => any | EventListenerOrEventListenerObject,
         options?: boolean | AddEventListenerOptions,
     ): void {
         // @ts-ignore
@@ -122,7 +125,10 @@ export class AudioTrackList<T = {}>
     ): void;
     public removeEventListener<K extends keyof AudioTrackListEventMap>(
         type: K | string,
-        listener: (this: AudioTrackList, ev: AudioTrackListEventMap[K]) => any | EventListenerOrEventListenerObject,
+        listener: (
+            this: AudioTrackList,
+            ev: AudioTrackListEventMap[K],
+        ) => any | EventListenerOrEventListenerObject,
         options?: boolean | EventListenerOptions,
     ): void {
         // @ts-ignore

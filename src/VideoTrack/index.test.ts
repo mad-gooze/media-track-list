@@ -21,11 +21,11 @@ describe(VideoTrack, () => {
     });
 
     it('custom props', () => {
-        const track = new VideoTrack({ 
+        const track = new VideoTrack({
             width: 1920,
-        height: 1080,
-        bitrate: 100500,
-        props: {metadata: 'foobar'}
+            height: 1080,
+            bitrate: 100500,
+            props: { metadata: 'foobar' },
         });
 
         expect(track.width).toEqual(1920);

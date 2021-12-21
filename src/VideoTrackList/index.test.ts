@@ -145,7 +145,9 @@ describe(VideoTrackList, () => {
         list.addTrack(track);
 
         expect(onAddTrackInline).toBeCalledTimes(1);
-        expect(onAddTrackInline).lastCalledWith(expect.objectContaining({ track }));
+        expect(onAddTrackInline).lastCalledWith(
+            expect.objectContaining({ track }),
+        );
         expect(onAddTrackInline).toHaveBeenCalledBefore(onAddTrack);
 
         expect(onAddTrack).toBeCalledTimes(1);
@@ -155,7 +157,9 @@ describe(VideoTrackList, () => {
         list.removeTrack(track);
 
         expect(onRemoveTrackInline).toBeCalledTimes(1);
-        expect(onRemoveTrackInline).lastCalledWith(expect.objectContaining({ track }));
+        expect(onRemoveTrackInline).lastCalledWith(
+            expect.objectContaining({ track }),
+        );
 
         expect(onRemoveTrackInline).toHaveBeenCalledBefore(onRemoveTrack);
         expect(onRemoveTrack).toBeCalledTimes(1);

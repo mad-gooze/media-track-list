@@ -77,7 +77,10 @@ export class VideoTrackList<T = {}>
     ): void;
     public addEventListener<K extends keyof VideoTrackListEventMap>(
         type: K | string,
-        listener: (this: VideoTrackList, ev: VideoTrackListEventMap[K]) => any | EventListenerOrEventListenerObject,
+        listener: (
+            this: VideoTrackList,
+            ev: VideoTrackListEventMap[K],
+        ) => any | EventListenerOrEventListenerObject,
         options?: boolean | AddEventListenerOptions,
     ): void {
         // @ts-ignore
@@ -96,7 +99,10 @@ export class VideoTrackList<T = {}>
     ): void;
     public removeEventListener<K extends keyof VideoTrackListEventMap>(
         type: K | string,
-        listener: (this: VideoTrackList, ev: VideoTrackListEventMap[K]) => any | EventListenerOrEventListenerObject,
+        listener: (
+            this: VideoTrackList,
+            ev: VideoTrackListEventMap[K],
+        ) => any | EventListenerOrEventListenerObject,
         options?: boolean | EventListenerOptions,
     ): void {
         // @ts-ignore
