@@ -1,6 +1,6 @@
 import { CustomTrackEvent } from '../CustomTrackEvent';
 import { Track } from '../Track';
-import EventTarget from '@ungap/event-target'
+import EventTarget from '@ungap/event-target';
 import { createCustomEvent } from '../createCustomEvent';
 
 /**
