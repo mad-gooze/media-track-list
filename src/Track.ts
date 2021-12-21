@@ -51,5 +51,6 @@ export abstract class Track<T> extends EventTarget implements TrackProps<T> {
         this.language = language;
         this.id = id;
         this.sourceBuffer = sourceBuffer;
+        this.props = props;
     }
 }
