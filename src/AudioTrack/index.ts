@@ -1,5 +1,5 @@
-import { Track, TrackProps } from './Track';
-import type { AudioTrack as IAudioTrack } from './video';
+import { Track, TrackProps } from '../Track';
+import type { AudioTrack as IAudioTrack } from '../video';
 
 export type AudioTrackProps = { enabled?: boolean };
 

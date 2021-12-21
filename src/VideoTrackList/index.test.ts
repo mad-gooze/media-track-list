@@ -32,33 +32,33 @@ describe(VideoTrackList, () => {
         ];
         const list = new VideoTrackList([tracks[0], tracks[1]]);
 
-        expect(tracks[0].selected).toBeFalsy();
-        expect(tracks[1].selected).toBeTruthy();
+        expect(tracks[0].selected).toEqual(false);
+        expect(tracks[1].selected).toEqual(true);
         expect(list.selectedIndex).toEqual(1);
 
         tracks[0].selected = true;
-        expect(tracks[0].selected).toBeTruthy();
+        expect(tracks[0].selected).toEqual(true);
         expect(list.selectedIndex).toEqual(0);
-        expect(tracks[1].selected).toBeFalsy();
+        expect(tracks[1].selected).toEqual(false);
 
         list.addTrack(tracks[2]);
-        expect(tracks[0].selected).toBeFalsy();
-        expect(tracks[1].selected).toBeFalsy();
-        expect(tracks[2].selected).toBeTruthy();
+        expect(tracks[0].selected).toEqual(false);
+        expect(tracks[1].selected).toEqual(false);
+        expect(tracks[2].selected).toEqual(true);
         expect(list.selectedIndex).toEqual(2);
 
         tracks[1].selected = true;
-        expect(tracks[0].selected).toBeFalsy();
-        expect(tracks[1].selected).toBeTruthy();
+        expect(tracks[0].selected).toEqual(false);
+        expect(tracks[1].selected).toEqual(true);
         expect(list.selectedIndex).toEqual(1);
-        expect(tracks[2].selected).toBeFalsy();
+        expect(tracks[2].selected).toEqual(false);
 
         list.addTrack(tracks[3]);
-        expect(tracks[0].selected).toBeFalsy();
-        expect(tracks[1].selected).toBeTruthy();
+        expect(tracks[0].selected).toEqual(false);
+        expect(tracks[1].selected).toEqual(true);
         expect(list.selectedIndex).toEqual(1);
-        expect(tracks[2].selected).toBeFalsy();
-        expect(tracks[3].selected).toBeFalsy();
+        expect(tracks[2].selected).toEqual(false);
+        expect(tracks[3].selected).toEqual(false);
 
         list.removeTrack(tracks[0]);
         list.removeTrack(tracks[1]);
@@ -73,18 +73,18 @@ describe(VideoTrackList, () => {
         ];
         const list = new VideoTrackList([tracks[0], tracks[1]]);
 
-        expect(tracks[0].selected).toBeFalsy();
-        expect(tracks[1].selected).toBeFalsy();
+        expect(tracks[0].selected).toEqual(false);
+        expect(tracks[1].selected).toEqual(false);
         expect(list.selectedIndex).toEqual(-1);
 
         tracks[0].selected = true;
-        expect(tracks[0].selected).toBeTruthy();
+        expect(tracks[0].selected).toEqual(true);
         expect(list.selectedIndex).toEqual(0);
-        expect(tracks[1].selected).toBeFalsy();
+        expect(tracks[1].selected).toEqual(false);
 
         tracks[0].selected = false;
-        expect(tracks[0].selected).toBeFalsy();
-        expect(tracks[1].selected).toBeFalsy();
+        expect(tracks[0].selected).toEqual(false);
+        expect(tracks[1].selected).toEqual(false);
         expect(list.selectedIndex).toEqual(-1);
 
         list.removeTrack(tracks[0]);

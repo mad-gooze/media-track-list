@@ -1,4 +1,4 @@
-import { getUniqueTrackId } from './getUniqueTrackId';
+import { getUniqueTrackId } from '../getUniqueTrackId';
 
 export type TrackProps<T extends {}> = Partial<{
     label: string;

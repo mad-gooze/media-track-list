@@ -29,28 +29,28 @@ describe(AudioTrackList, () => {
         ];
         list = new AudioTrackList([tracks[0], tracks[1]]);
 
-        expect(tracks[0].enabled).toBeFalsy();
-        expect(tracks[1].enabled).toBeTruthy();
+        expect(tracks[0].enabled).toEqual(false);
+        expect(tracks[1].enabled).toEqual(true);
 
         tracks[0].enabled = true;
-        expect(tracks[0].enabled).toBeTruthy();
-        expect(tracks[1].enabled).toBeFalsy();
+        expect(tracks[0].enabled).toEqual(true);
+        expect(tracks[1].enabled).toEqual(false);
 
         list.addTrack(tracks[2]);
-        expect(tracks[0].enabled).toBeFalsy();
-        expect(tracks[1].enabled).toBeFalsy();
-        expect(tracks[2].enabled).toBeTruthy();
+        expect(tracks[0].enabled).toEqual(false);
+        expect(tracks[1].enabled).toEqual(false);
+        expect(tracks[2].enabled).toEqual(true);
 
         tracks[1].enabled = true;
-        expect(tracks[0].enabled).toBeFalsy();
-        expect(tracks[1].enabled).toBeTruthy();
-        expect(tracks[2].enabled).toBeFalsy();
+        expect(tracks[0].enabled).toEqual(false);
+        expect(tracks[1].enabled).toEqual(true);
+        expect(tracks[2].enabled).toEqual(false);
 
         list.addTrack(tracks[3]);
-        expect(tracks[0].enabled).toBeFalsy();
-        expect(tracks[1].enabled).toBeTruthy();
-        expect(tracks[2].enabled).toBeFalsy();
-        expect(tracks[3].enabled).toBeFalsy();
+        expect(tracks[0].enabled).toEqual(false);
+        expect(tracks[1].enabled).toEqual(true);
+        expect(tracks[2].enabled).toEqual(false);
+        expect(tracks[3].enabled).toEqual(false);
     });
 
     it('all tracks can be disabled', () => {
@@ -61,16 +61,16 @@ describe(AudioTrackList, () => {
 
         list = new AudioTrackList([tracks[0], tracks[1]]);
 
-        expect(tracks[0].enabled).toBeFalsy();
-        expect(tracks[1].enabled).toBeFalsy();
+        expect(tracks[0].enabled).toEqual(false);
+        expect(tracks[1].enabled).toEqual(false);
 
         tracks[0].enabled = true;
-        expect(tracks[0].enabled).toBeTruthy();
-        expect(tracks[1].enabled).toBeFalsy();
+        expect(tracks[0].enabled).toEqual(true);
+        expect(tracks[1].enabled).toEqual(false);
 
         tracks[0].enabled = false;
-        expect(tracks[0].enabled).toBeFalsy();
-        expect(tracks[1].enabled).toBeFalsy();
+        expect(tracks[0].enabled).toEqual(false);
+        expect(tracks[1].enabled).toEqual(false);
     });
 
     it('trigger a change event per enabled change', () => {

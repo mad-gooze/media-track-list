@@ -1,5 +1,5 @@
-import { CustomTrackEvent } from './CustomTrackEvent';
-import { Track } from './Track';
+import { CustomTrackEvent } from '../CustomTrackEvent';
+import { Track } from '../Track';
 
 /**
  * Common functionality between AudioTrackList and VideoTrackList
