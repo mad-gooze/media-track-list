@@ -1,7 +1,6 @@
 .prettierrc.js
 .eslintrc.js
 jest.config.js
-src/
 tsconfig.json
 example/
 coverage/
@@ -10,3 +9,4 @@ dist/tsconfig.tsbuildinfo
 .eslintcache
 .github/
 babel.config.js
+index.ts
