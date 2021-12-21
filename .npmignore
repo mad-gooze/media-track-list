@@ -10,3 +10,5 @@ dist/tsconfig.tsbuildinfo
 .github/
 babel.config.js
 index.ts
+*.test.d.ts
+*.test.js

@@ -2,8 +2,8 @@
     "name": "media-track-list",
     "version": "0.1.0",
     "description": "Implements VideoTrackList/VideoTrack and AudioTrackList/AudioTrack interfaces",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "scripts": {
         "clean": "rimraf dist/ && rimraf coverage",
         "build": "tsc",
