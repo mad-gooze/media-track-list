@@ -1,6 +1,6 @@
 # media-track-list
 
-[![codecov](https://codecov.io/gh/mad-gooze/media-track-list/branch/main/graph/badge.svg?token=AA4DFXUB19)](https://codecov.io/gh/mad-gooze/media-track-list)
+[![CI](https://github.com/mad-gooze/media-track-list/actions/workflows/ci.yml/badge.svg)](https://github.com/mad-gooze/media-track-list/actions/workflows/ci.yml)[![codecov](https://codecov.io/gh/mad-gooze/media-track-list/branch/main/graph/badge.svg?token=AA4DFXUB19)](https://codecov.io/gh/mad-gooze/media-track-list)
 
 `media-track-list` implements [VideoTrackList/AudioTrackList](https://html.spec.whatwg.org/multipage/media.html#audiotracklist-and-videotracklist-objects) interfaces in JavaScript.
 
