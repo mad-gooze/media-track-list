@@ -5,6 +5,7 @@ import type {
     VideoTrackList as IVideoTrackList,
     VideoTrackListEventMap,
 } from '../video';
+import { createCustomEvent } from '../createCustomEvent';
 
 /**
  * Un-select all other {@link VideoTrack}s that are selected.
@@ -141,7 +142,7 @@ export class VideoTrackList<
             this._changing = true;
             disableOthers(this, track);
             this._changing = false;
-            this.dispatchEvent(new Event('change'));
+            this.dispatchEvent(createCustomEvent('change'));
         };
     }
 }

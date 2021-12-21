@@ -1,6 +1,7 @@
 import { CustomTrackEvent } from '../CustomTrackEvent';
 import { Track } from '../Track';
 import EventTarget from '@ungap/event-target'
+import { createCustomEvent } from '../createCustomEvent';
 
 /**
  * Common functionality between AudioTrackList and VideoTrackList
@@ -103,7 +104,7 @@ export abstract class TrackList<
      * @internal
      */
     protected dispatchTrackEvent(eventName: string, track: T): void {
-        const ev = new Event(eventName) as CustomTrackEvent<T, P>;
+        const ev: CustomTrackEvent<T, P> = createCustomEvent(eventName) as any;
         ev.track = track;
         this.dispatchEvent(ev);
     }

@@ -1,4 +1,5 @@
 import { AudioTrack } from '../AudioTrack';
+import { createCustomEvent } from '../createCustomEvent';
 import { TrackList } from '../TrackList';
 import type {
     AudioTrackEvent,
@@ -89,7 +90,7 @@ export class AudioTrackList<
             this._changing = true;
             disableOthers(this, track);
             this._changing = false;
-            this.dispatchEvent(new Event('change'));
+            this.dispatchEvent(createCustomEvent('change'));
         };
     }
 
