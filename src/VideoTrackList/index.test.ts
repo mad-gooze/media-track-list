@@ -4,7 +4,7 @@ import { VideoTrack } from '../VideoTrack';
 
 describe(VideoTrackList, () => {
     it('trigger "change" when "selectedchange" is fired on a track', () => {
-        const track = new VideoTrack({});
+        const track = new VideoTrack();
         const videoTrackList = new VideoTrackList([track]);
         let changes = 0;
 

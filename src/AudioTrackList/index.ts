@@ -1,9 +1,9 @@
-import { AudioTrack } from './AudioTrack';
-import { TrackList } from './TrackList';
+import { AudioTrack } from '../AudioTrack';
+import { TrackList } from '../TrackList';
 import type {
     AudioTrackEvent,
     AudioTrackList as IAudioTrackList,
-} from './video';
+} from '../video';
 
 /**
  * Anywhere we call this function we diverge from the spec
@@ -82,7 +82,9 @@ export class AudioTrackList<T = {}>
             this._changing = true;
             disableOthers(this, track);
             this._changing = false;
-            this.dispatchEvent(new Event('change'));
+            const changeEvent = new Event('change');
+            this.onchange?.(changeEvent);
+            this.dispatchEvent(changeEvent);
         };
     }
 }
