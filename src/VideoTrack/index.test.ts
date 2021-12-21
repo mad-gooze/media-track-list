@@ -20,6 +20,19 @@ describe(VideoTrack, () => {
         expect(track.id).not.toEqual(otherTrack.id);
     });
 
+    it('custom props', () => {
+        const track = new VideoTrack({ 
+            width: 1920,
+        height: 1080,
+        bitrate: 100500,
+        props: {metadata: 'foobar'}
+        });
+
+        expect(track.width).toEqual(1920);
+        expect(track.height).toEqual(1080);
+        expect(track.props.metadata).toEqual('foobar');
+    });
+
     it('when selected is changed onselectedchange is called', () => {
         const track = new VideoTrack({ selected: false });
         track.onselectedchange = jest.fn();
