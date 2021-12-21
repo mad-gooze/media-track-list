@@ -1,6 +1,6 @@
 {
     "name": "media-track-list",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Implements VideoTrackList/VideoTrack and AudioTrackList/AudioTrack interfaces",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
