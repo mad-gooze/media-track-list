@@ -1,4 +1,5 @@
 module.exports = {
+    ignorePatterns: ['dist/'],
     parser: '@typescript-eslint/parser',
     env: {
         browser: true,
