@@ -20,6 +20,14 @@ describe(AudioTrack, () => {
         expect(track.id).not.toEqual(otherTrack.id);
     });
 
+    it('custom props', () => {
+        const track = new AudioTrack({
+            bitrate: 100500,
+        });
+
+        expect(track.bitrate).toEqual(100500);
+    });
+
     it('when enabled is changed onenabledchange is called', () => {
         const track = new AudioTrack({ enabled: false });
         track.onenabledchange = jest.fn();
