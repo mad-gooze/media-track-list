@@ -7,6 +7,7 @@ export type VideoTrackProps = Partial<{
     width: number;
     height: number;
     bitrate: number;
+    frameRate: number;
     sourceBuffer: SourceBuffer | null;
 }>;
 
@@ -26,6 +27,7 @@ export class VideoTrack<
     public readonly width?: number;
     public readonly height?: number;
     public readonly bitrate?: number;
+    public readonly frameRate?: number;
 
     /**
      * @internal
@@ -37,6 +39,7 @@ export class VideoTrack<
         width,
         height,
         bitrate,
+        frameRate,
         ...trackProps
     }: TrackProps<T> & VideoTrackProps = {}) {
         super(trackProps);
@@ -44,6 +47,7 @@ export class VideoTrack<
         this.selected = selected;
 
         this.bitrate = bitrate;
+        this.frameRate = frameRate;
         this.width = width;
         this.height = height;
     }

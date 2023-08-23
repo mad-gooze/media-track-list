@@ -25,11 +25,14 @@ describe(VideoTrack, () => {
             width: 1920,
             height: 1080,
             bitrate: 100500,
+            frameRate: 999,
             props: { metadata: 'foobar' },
         });
 
         expect(track.width).toEqual(1920);
         expect(track.height).toEqual(1080);
+        expect(track.bitrate).toEqual(100500);
+        expect(track.frameRate).toEqual(999);
         expect(track.props!.metadata).toEqual('foobar');
     });
 
