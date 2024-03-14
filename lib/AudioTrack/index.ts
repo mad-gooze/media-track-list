@@ -5,6 +5,7 @@ import type { AudioTrack as IAudioTrack } from '../video';
 export type AudioTrackProps = Partial<{
     enabled: boolean;
     bitrate: number;
+    channels?: number;
 }>;
 
 /**
@@ -22,6 +23,7 @@ export class AudioTrack<
     private _enabled = false;
 
     public readonly bitrate?: number;
+    public readonly channels?: number;
 
     /**
      * @internal
@@ -31,12 +33,14 @@ export class AudioTrack<
     constructor({
         enabled = false,
         bitrate,
+        channels,
         ...trackProps
     }: TrackProps<T> & AudioTrackProps = {}) {
         super(trackProps);
         this._enabled = enabled;
 
         this.bitrate = bitrate;
+        this.channels = channels;
     }
 
     /**
