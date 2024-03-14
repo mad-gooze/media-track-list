@@ -23,7 +23,7 @@ describe(AudioTrack, () => {
     it('custom props', () => {
         const track = new AudioTrack({
             bitrate: 100500,
-            channels: 6
+            channels: 6,
         });
 
         expect(track.bitrate).toEqual(100500);
